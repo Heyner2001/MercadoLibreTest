@@ -8,6 +8,10 @@
 import UIKit
 import SnapKit
 
+enum NavBarStyle {
+    case standard, search
+}
+
 class NavigationBarView: UIView {
     
     private let containerView: UIView = {
@@ -16,11 +20,20 @@ class NavigationBarView: UIView {
         return view
     }()
     
-    init() {
+    private var barStyle: UIView?
+    
+    init(style: NavBarStyle) {
         super.init(frame: .zero)
-        backgroundColor = .mainYellow
+        backgroundColor = style == .standard ? .mainYellow : .white
+        barStyle = style == .standard ? NavBarStandard() : NavBarSearch()
+        
+        //Bottom shadow
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 1.0)
+        layer.shadowOpacity = 0.2
         
         addSubview(containerView)
+        containerView.addSubview(barStyle ?? UIView())
         setUpConstraints()
     }
     
@@ -36,6 +49,8 @@ class NavigationBarView: UIView {
             $0.top.equalToSuperview().offset(UIApplication.statusBarHeight + 8 )
             $0.bottom.equalToSuperview().offset(-8)
         }
+        
+        barStyle?.snp.makeConstraints { $0.edges.equalToSuperview() }
     }
     
     required init?(coder: NSCoder) {

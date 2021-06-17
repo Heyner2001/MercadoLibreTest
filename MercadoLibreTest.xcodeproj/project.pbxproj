@@ -21,6 +21,9 @@
 		3AB1BC45267A98DD00574782 /* LocalStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB1BC44267A98DD00574782 /* LocalStorageManager.swift */; };
 		3AB1BC4B267A9EDD00574782 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB1BC4A267A9EDD00574782 /* NavigationBarView.swift */; };
 		3AB1BC53267AA2CA00574782 /* AppExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB1BC52267AA2CA00574782 /* AppExtensions.swift */; };
+		3AB1BC5B267AAE7300574782 /* NavBarStandard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB1BC5A267AAE7200574782 /* NavBarStandard.swift */; };
+		3AB1BC60267ACF6500574782 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB1BC5F267ACF6500574782 /* SearchBarView.swift */; };
+		3AB1BC65267AD42E00574782 /* NavBarSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB1BC64267AD42E00574782 /* NavBarSearch.swift */; };
 		7403F0961CF242B4BB680DB1 /* Pods_MercadoLibreTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 015BCF83E4FF0FA0F8DF4EAB /* Pods_MercadoLibreTestTests.framework */; };
 		78BECD62777D8AEA909E2B5E /* Pods_MercadoLibreTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9DCFA4C80BF7E800D35651 /* Pods_MercadoLibreTest.framework */; };
 		9ADF54BA8CB03B7A29D9AC75 /* Pods_MercadoLibreTest_MercadoLibreTestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0836C5057A25E3766324791 /* Pods_MercadoLibreTest_MercadoLibreTestUITests.framework */; };
@@ -66,6 +69,9 @@
 		3AB1BC44267A98DD00574782 /* LocalStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageManager.swift; sourceTree = "<group>"; };
 		3AB1BC4A267A9EDD00574782 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
 		3AB1BC52267AA2CA00574782 /* AppExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppExtensions.swift; sourceTree = "<group>"; };
+		3AB1BC5A267AAE7200574782 /* NavBarStandard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarStandard.swift; sourceTree = "<group>"; };
+		3AB1BC5F267ACF6500574782 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		3AB1BC64267AD42E00574782 /* NavBarSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarSearch.swift; sourceTree = "<group>"; };
 		3E581B48589A20B8A7C5240E /* Pods-MercadoLibreTest-MercadoLibreTestUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MercadoLibreTest-MercadoLibreTestUITests.debug.xcconfig"; path = "Target Support Files/Pods-MercadoLibreTest-MercadoLibreTestUITests/Pods-MercadoLibreTest-MercadoLibreTestUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5534F9D364C72E4E51CB3148 /* Pods-MercadoLibreTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MercadoLibreTest.debug.xcconfig"; path = "Target Support Files/Pods-MercadoLibreTest/Pods-MercadoLibreTest.debug.xcconfig"; sourceTree = "<group>"; };
 		9CDACF83855D6EF0DDC72752 /* Pods-MercadoLibreTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MercadoLibreTestTests.release.xcconfig"; path = "Target Support Files/Pods-MercadoLibreTestTests/Pods-MercadoLibreTestTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -212,6 +218,9 @@
 			isa = PBXGroup;
 			children = (
 				3AB1BC4A267A9EDD00574782 /* NavigationBarView.swift */,
+				3AB1BC5A267AAE7200574782 /* NavBarStandard.swift */,
+				3AB1BC64267AD42E00574782 /* NavBarSearch.swift */,
+				3AB1BC5F267ACF6500574782 /* SearchBarView.swift */,
 			);
 			path = NavigationBar;
 			sourceTree = "<group>";
@@ -467,12 +476,15 @@
 				3A61CCB9267A80CE00F2DCCE /* HomeView.swift in Sources */,
 				3A38B676267A764D004F05B9 /* AppDelegate.swift in Sources */,
 				3A38B678267A764D004F05B9 /* SceneDelegate.swift in Sources */,
+				3AB1BC60267ACF6500574782 /* SearchBarView.swift in Sources */,
 				3AB1BC3F267A94BF00574782 /* AppColors.swift in Sources */,
 				3AB1BC53267AA2CA00574782 /* AppExtensions.swift in Sources */,
 				3A61CCC6267A8DD400F2DCCE /* StringSources.swift in Sources */,
 				3A61CCC1267A810A00F2DCCE /* HomeViewController.swift in Sources */,
+				3AB1BC5B267AAE7300574782 /* NavBarStandard.swift in Sources */,
 				3AB1BC45267A98DD00574782 /* LocalStorageManager.swift in Sources */,
 				3AB1BC4B267A9EDD00574782 /* NavigationBarView.swift in Sources */,
+				3AB1BC65267AD42E00574782 /* NavBarSearch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

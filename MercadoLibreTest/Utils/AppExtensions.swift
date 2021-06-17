@@ -44,10 +44,11 @@ enum FontSize: CGFloat {
 }
 
 enum FontWeight: String {
-    case bold = "AmericanTypewriter-Bold"
-    case extraBold = "AmericanTypewriter-ExtraBold"
-    case medium = "AmericanTypewriter-Semibold"
-    case regular = "AmericanTypewriter"
+    
+    case bold = "AppleSDGothicNeo-Bold"
+    case semiBold = "AppleSDGothicNeo-SemiBold"
+    case medium = "AppleSDGothicNeo-Medium"
+    case regular = "AppleSDGothicNeo-Regular"
 }
 
 
@@ -70,5 +71,5 @@ extension UIApplication {
         return sharedKeyWindow.safeAreaInsets.bottom
     }
     
-    static let navBarHeight: CGFloat = statusBarHeight + 70
+    static let navBarHeight: CGFloat = statusBarHeight + 60
 }

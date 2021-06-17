@@ -9,11 +9,12 @@ import UIKit
 
 class HomeView: UIView {
     
-    let navBar = NavigationBarView()
+    let navBar = NavigationBarView(style: .standard)
     
     init() {
         super.init(frame: .zero)
         addSubview(navBar)
+        setUpConstraints()
     }
     
     private func setUpConstraints() {
