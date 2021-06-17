@@ -7,7 +7,19 @@
 
 import UIKit
 
+protocol SearchTextFieldActions: class {
+    func textFieldDidChange()
+    func textFieldTap()
+}
+
+protocol SearchButtonAction: class {
+    func searchButtonAction()
+}
+
 class SearchBarView: UIView {
+    
+    weak var searchTextFieldDelegate: SearchTextFieldActions?
+    weak var searchButtonDelegate: SearchButtonAction?
     
     private lazy var searchStack: UIStackView = {
         let stackView = UIStackView()
@@ -25,6 +37,8 @@ class SearchBarView: UIView {
         textField.backgroundColor = .clear
         textField.font = .setFont(.regular, .normal)
         textField.placeholder = StringSources.shared.searchPlaceholder
+        textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        textField.addTarget(self, action: #selector(textFieldTap), for: .touchUpInside)
         return textField
     }()
     
@@ -33,11 +47,11 @@ class SearchBarView: UIView {
         button.backgroundColor = .clear
         button.setImage(UIImage(named: StringSources.shared.searchImage)?.withRenderingMode(.alwaysTemplate), for: .normal)
         button.tintColor = .lightGray
-        //button.addTarget(self, action: #selector(searchButtonAction), for: .touchUpInside)
+        button.addTarget(self, action: #selector(searchButtonAction), for: .touchUpInside)
         return button
     }()
     
-    init(roundedBorders: Bool = true) {
+    init(roundedBorders: Bool = true, navBarType: NavBarType) {
         super.init(frame: .zero)
         backgroundColor = .white
         if roundedBorders { layer.cornerRadius = 22 }
@@ -51,6 +65,18 @@ class SearchBarView: UIView {
             $0.edges.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 4))
         }
         searchButton.snp.makeConstraints { $0.width.equalTo(30) }
+    }
+    
+    @objc private func textFieldDidChange()  {
+        searchTextFieldDelegate?.textFieldDidChange()
+    }
+    
+    @objc private func textFieldTap() {
+        searchTextFieldDelegate?.textFieldTap()
+    }
+    
+    @objc private func searchButtonAction() {
+        searchButtonDelegate?.searchButtonAction()
     }
     
     required init?(coder: NSCoder) {

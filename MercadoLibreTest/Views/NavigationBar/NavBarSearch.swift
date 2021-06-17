@@ -28,11 +28,12 @@ class NavBarSearch: UIView {
         return button
     }()
     
-    private let searchBar = SearchBarView()
+    private let searchBar = SearchBarView(navBarType: .search)
     
     init() {
         super.init(frame: .zero)
         backgroundColor = .clear
+        searchBar.searchTextFieldDelegate = self
         addSubview(containerStackView)
         setUpConstraints()
     }
@@ -43,10 +44,18 @@ class NavBarSearch: UIView {
     }
     
     @objc private func backAction() {
-        
+        globalNavigationController?.popViewController(animated: true)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+extension NavBarSearch: SearchTextFieldActions {
+    func textFieldDidChange() {
+        //Pending
+    }
+    
+    func textFieldTap() {}
 }

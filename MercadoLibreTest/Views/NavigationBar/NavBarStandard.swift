@@ -9,7 +9,7 @@ import UIKit
 
 class NavBarStandard: UIView {
     
-    private let searchBar = SearchBarView()
+    private let searchBar = SearchBarView(navBarType: .standard)
     private lazy var contentStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -31,6 +31,8 @@ class NavBarStandard: UIView {
     init() {
         super.init(frame: .zero)
         backgroundColor = .clear
+        searchBar.searchButtonDelegate = self
+        searchBar.searchTextFieldDelegate = self
         addSubview(contentStackView)
         setUpConstraints()
     }
@@ -43,4 +45,17 @@ class NavBarStandard: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+extension NavBarStandard: SearchTextFieldActions, SearchButtonAction {
+    func textFieldDidChange() {}
+    
+    func textFieldTap() {
+        //Open search
+    }
+    
+    func searchButtonAction() {
+        //Open search
+    }
+    
 }

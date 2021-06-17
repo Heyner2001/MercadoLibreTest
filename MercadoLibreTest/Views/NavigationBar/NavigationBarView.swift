@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-enum NavBarStyle {
+enum NavBarType {
     case standard, search
 }
 
@@ -20,12 +20,12 @@ class NavigationBarView: UIView {
         return view
     }()
     
-    private var barStyle: UIView?
+    private var barType: UIView?
     
-    init(style: NavBarStyle) {
+    init(type: NavBarType) {
         super.init(frame: .zero)
-        backgroundColor = style == .standard ? .mainYellow : .white
-        barStyle = style == .standard ? NavBarStandard() : NavBarSearch()
+        backgroundColor = type == .standard ? .mainYellow : .white
+        barType = type == .standard ? NavBarStandard() : NavBarSearch()
         
         //Bottom shadow
         layer.shadowColor = UIColor.black.cgColor
@@ -33,15 +33,12 @@ class NavigationBarView: UIView {
         layer.shadowOpacity = 0.2
         
         addSubview(containerView)
-        containerView.addSubview(barStyle ?? UIView())
+        containerView.addSubview(barType ?? UIView())
         setUpConstraints()
     }
     
     private func setUpConstraints() {
-        snp.makeConstraints {
-            $0.height.equalTo(UIApplication.navBarHeight)
-            $0.width.equalTo(UIScreen.main.bounds.width)
-        }
+        snp.makeConstraints { $0.height.equalTo(UIApplication.navBarHeight) }
         
         containerView.snp.makeConstraints {
             $0.left.equalToSuperview().offset(16)
@@ -50,7 +47,7 @@ class NavigationBarView: UIView {
             $0.bottom.equalToSuperview().offset(-8)
         }
         
-        barStyle?.snp.makeConstraints { $0.edges.equalToSuperview() }
+        barType?.snp.makeConstraints { $0.edges.equalToSuperview() }
     }
     
     required init?(coder: NSCoder) {

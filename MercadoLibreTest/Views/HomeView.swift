@@ -9,7 +9,7 @@ import UIKit
 
 class HomeView: UIView {
     
-    let navBar = NavigationBarView(style: .standard)
+    let navBar = NavigationBarView(type: .standard)
     
     init() {
         super.init(frame: .zero)
@@ -18,7 +18,7 @@ class HomeView: UIView {
     }
     
     private func setUpConstraints() {
-        navBar.snp.makeConstraints { $0.top.left.equalToSuperview() }
+        navBar.snp.makeConstraints { $0.right.left.top.equalToSuperview() }
     }
     
     required init?(coder: NSCoder) {
