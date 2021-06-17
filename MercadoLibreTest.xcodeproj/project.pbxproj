@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,17 @@
 		3A38B682267A764F004F05B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A38B680267A764F004F05B9 /* LaunchScreen.storyboard */; };
 		3A38B68D267A764F004F05B9 /* MercadoLibreTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A38B68C267A764F004F05B9 /* MercadoLibreTestTests.swift */; };
 		3A38B698267A764F004F05B9 /* MercadoLibreTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A38B697267A764F004F05B9 /* MercadoLibreTestUITests.swift */; };
+		3A61CCB9267A80CE00F2DCCE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A61CCB8267A80CE00F2DCCE /* HomeView.swift */; };
+		3A61CCC1267A810A00F2DCCE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A61CCC0267A810A00F2DCCE /* HomeViewController.swift */; };
+		3A61CCC6267A8DD400F2DCCE /* StringSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A61CCC5267A8DD400F2DCCE /* StringSources.swift */; };
+		3A61CCCB267A8FE200F2DCCE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A61CCCA267A8FE200F2DCCE /* NetworkManager.swift */; };
+		3AB1BC3F267A94BF00574782 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB1BC3E267A94BF00574782 /* AppColors.swift */; };
+		3AB1BC45267A98DD00574782 /* LocalStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB1BC44267A98DD00574782 /* LocalStorageManager.swift */; };
+		3AB1BC4B267A9EDD00574782 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB1BC4A267A9EDD00574782 /* NavigationBarView.swift */; };
+		3AB1BC53267AA2CA00574782 /* AppExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB1BC52267AA2CA00574782 /* AppExtensions.swift */; };
+		3AB1BC5B267AAE7300574782 /* NavBarStandard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB1BC5A267AAE7200574782 /* NavBarStandard.swift */; };
+		3AB1BC60267ACF6500574782 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB1BC5F267ACF6500574782 /* SearchBarView.swift */; };
+		3AB1BC65267AD42E00574782 /* NavBarSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB1BC64267AD42E00574782 /* NavBarSearch.swift */; };
 		7403F0961CF242B4BB680DB1 /* Pods_MercadoLibreTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 015BCF83E4FF0FA0F8DF4EAB /* Pods_MercadoLibreTestTests.framework */; };
 		78BECD62777D8AEA909E2B5E /* Pods_MercadoLibreTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9DCFA4C80BF7E800D35651 /* Pods_MercadoLibreTest.framework */; };
 		9ADF54BA8CB03B7A29D9AC75 /* Pods_MercadoLibreTest_MercadoLibreTestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0836C5057A25E3766324791 /* Pods_MercadoLibreTest_MercadoLibreTestUITests.framework */; };
@@ -50,6 +61,17 @@
 		3A38B693267A764F004F05B9 /* MercadoLibreTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MercadoLibreTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A38B697267A764F004F05B9 /* MercadoLibreTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MercadoLibreTestUITests.swift; sourceTree = "<group>"; };
 		3A38B699267A764F004F05B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A61CCB8267A80CE00F2DCCE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		3A61CCC0267A810A00F2DCCE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		3A61CCC5267A8DD400F2DCCE /* StringSources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringSources.swift; sourceTree = "<group>"; };
+		3A61CCCA267A8FE200F2DCCE /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		3AB1BC3E267A94BF00574782 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		3AB1BC44267A98DD00574782 /* LocalStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageManager.swift; sourceTree = "<group>"; };
+		3AB1BC4A267A9EDD00574782 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
+		3AB1BC52267AA2CA00574782 /* AppExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppExtensions.swift; sourceTree = "<group>"; };
+		3AB1BC5A267AAE7200574782 /* NavBarStandard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarStandard.swift; sourceTree = "<group>"; };
+		3AB1BC5F267ACF6500574782 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		3AB1BC64267AD42E00574782 /* NavBarSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarSearch.swift; sourceTree = "<group>"; };
 		3E581B48589A20B8A7C5240E /* Pods-MercadoLibreTest-MercadoLibreTestUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MercadoLibreTest-MercadoLibreTestUITests.debug.xcconfig"; path = "Target Support Files/Pods-MercadoLibreTest-MercadoLibreTestUITests/Pods-MercadoLibreTest-MercadoLibreTestUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5534F9D364C72E4E51CB3148 /* Pods-MercadoLibreTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MercadoLibreTest.debug.xcconfig"; path = "Target Support Files/Pods-MercadoLibreTest/Pods-MercadoLibreTest.debug.xcconfig"; sourceTree = "<group>"; };
 		9CDACF83855D6EF0DDC72752 /* Pods-MercadoLibreTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MercadoLibreTestTests.release.xcconfig"; path = "Target Support Files/Pods-MercadoLibreTestTests/Pods-MercadoLibreTestTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -97,7 +119,6 @@
 				B04EAC16E6E34D141F9427F3 /* Pods-MercadoLibreTestTests.debug.xcconfig */,
 				9CDACF83855D6EF0DDC72752 /* Pods-MercadoLibreTestTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -126,6 +147,10 @@
 		3A38B674267A764D004F05B9 /* MercadoLibreTest */ = {
 			isa = PBXGroup;
 			children = (
+				3A61CCB6267A809000F2DCCE /* Models */,
+				3A61CCB5267A808800F2DCCE /* Views */,
+				3A61CCB4267A807500F2DCCE /* ViewControllers */,
+				3A61CCB7267A809A00F2DCCE /* Utils */,
 				3A38B675267A764D004F05B9 /* AppDelegate.swift */,
 				3A38B677267A764D004F05B9 /* SceneDelegate.swift */,
 				3A38B67E267A764F004F05B9 /* Assets.xcassets */,
@@ -151,6 +176,61 @@
 				3A38B699267A764F004F05B9 /* Info.plist */,
 			);
 			path = MercadoLibreTestUITests;
+			sourceTree = "<group>";
+		};
+		3A4B07DB267AFBE500298BD8 /* SearchViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SearchViews;
+			sourceTree = "<group>";
+		};
+		3A61CCB4267A807500F2DCCE /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3A61CCC0267A810A00F2DCCE /* HomeViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3A61CCB5267A808800F2DCCE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3A4B07DB267AFBE500298BD8 /* SearchViews */,
+				3AB1BC49267A9EB100574782 /* NavigationBar */,
+				3A61CCB8267A80CE00F2DCCE /* HomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3A61CCB6267A809000F2DCCE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3A61CCB7267A809A00F2DCCE /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3AB1BC3E267A94BF00574782 /* AppColors.swift */,
+				3AB1BC52267AA2CA00574782 /* AppExtensions.swift */,
+				3AB1BC44267A98DD00574782 /* LocalStorageManager.swift */,
+				3A61CCC5267A8DD400F2DCCE /* StringSources.swift */,
+				3A61CCCA267A8FE200F2DCCE /* NetworkManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		3AB1BC49267A9EB100574782 /* NavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				3AB1BC4A267A9EDD00574782 /* NavigationBarView.swift */,
+				3AB1BC5A267AAE7200574782 /* NavBarStandard.swift */,
+				3AB1BC64267AD42E00574782 /* NavBarSearch.swift */,
+				3AB1BC5F267ACF6500574782 /* SearchBarView.swift */,
+			);
+			path = NavigationBar;
 			sourceTree = "<group>";
 		};
 		6F4E50D76DAFF708DBD88208 /* Frameworks */ = {
@@ -400,8 +480,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A61CCCB267A8FE200F2DCCE /* NetworkManager.swift in Sources */,
+				3A61CCB9267A80CE00F2DCCE /* HomeView.swift in Sources */,
 				3A38B676267A764D004F05B9 /* AppDelegate.swift in Sources */,
 				3A38B678267A764D004F05B9 /* SceneDelegate.swift in Sources */,
+				3AB1BC60267ACF6500574782 /* SearchBarView.swift in Sources */,
+				3AB1BC3F267A94BF00574782 /* AppColors.swift in Sources */,
+				3AB1BC53267AA2CA00574782 /* AppExtensions.swift in Sources */,
+				3A61CCC6267A8DD400F2DCCE /* StringSources.swift in Sources */,
+				3A61CCC1267A810A00F2DCCE /* HomeViewController.swift in Sources */,
+				3AB1BC5B267AAE7300574782 /* NavBarStandard.swift in Sources */,
+				3AB1BC45267A98DD00574782 /* LocalStorageManager.swift in Sources */,
+				3AB1BC4B267A9EDD00574782 /* NavigationBarView.swift in Sources */,
+				3AB1BC65267AD42E00574782 /* NavBarSearch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
