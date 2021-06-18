@@ -6,12 +6,23 @@
 //
 
 import UIKit
+import RxSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let countryLogic = CountryModelLogic()
+        countryLogic.requestGetCountryData()
+        countryLogic.publishSubject
+            .subscribe(on: MainScheduler.instance)
+            .subscribe(onNext: { _ in
+                DispatchQueue.main.async {
+                    homeVC.homeView.categoriesCollectionView.reloadData()
+                }
+            })
+            .disposed(by: networkManager.disposeBag)
         return true
     }
 

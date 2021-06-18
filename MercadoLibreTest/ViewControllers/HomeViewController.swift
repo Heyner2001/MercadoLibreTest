@@ -6,15 +6,17 @@
 //
 
 import UIKit
+import RxSwift
 
 var globalNavigationController: UINavigationController?
+var homeVC = HomeViewController()
 class HomeViewController: UIViewController {
     
     let homeView = HomeView()
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        view.backgroundColor = .white
+        view.backgroundColor = .backgroundColor
         
         view.addSubview(homeView)
         setUpConstraints()

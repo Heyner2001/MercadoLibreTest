@@ -23,7 +23,7 @@ class NavBarSearch: UIView {
     private lazy var backButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .clear
-        button.setImage(UIImage(named: StringSources.shared.backImage), for: .normal)
+        button.setImage(UIImage(named: stringSources.backImage), for: .normal)
         button.addTarget(self, action: #selector(backAction), for: .touchUpInside)
         return button
     }()
