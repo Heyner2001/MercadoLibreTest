@@ -36,7 +36,7 @@ class SearchBarView: UIView {
         let textField = UITextField()
         textField.backgroundColor = .clear
         textField.font = .setFont(.regular, .normal)
-        textField.placeholder = StringSources.shared.searchPlaceholder
+        textField.placeholder = stringSources.searchPlaceholder
         textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         textField.addTarget(self, action: #selector(textFieldTap), for: .touchUpInside)
         return textField
@@ -45,7 +45,7 @@ class SearchBarView: UIView {
     private let searchButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .clear
-        button.setImage(UIImage(named: StringSources.shared.searchImage)?.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.setImage(UIImage(named: stringSources.searchImage)?.withRenderingMode(.alwaysTemplate), for: .normal)
         button.tintColor = .lightGray
         button.addTarget(self, action: #selector(searchButtonAction), for: .touchUpInside)
         return button

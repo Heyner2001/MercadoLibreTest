@@ -19,7 +19,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.windowScene = windowScene
         window?.makeKeyAndVisible()
-        let homeVC = HomeViewController()
         globalNavigationController = UINavigationController(rootViewController: homeVC)
         window?.rootViewController = globalNavigationController
         globalNavigationController?.isNavigationBarHidden = true

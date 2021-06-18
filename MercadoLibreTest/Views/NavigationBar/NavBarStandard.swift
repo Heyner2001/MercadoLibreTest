@@ -23,7 +23,7 @@ class NavBarStandard: UIView {
     
     private lazy var leftImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: StringSources.shared.logoImage)
+        imageView.image = UIImage(named: stringSources.logoImage)
         imageView.backgroundColor = .clear
         return imageView
     }()
