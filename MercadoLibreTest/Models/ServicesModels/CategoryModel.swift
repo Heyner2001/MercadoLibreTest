@@ -21,8 +21,8 @@ let categoryLogic = CategoryModelLogic()
 class CategoryModelLogic {
     
     let productModelLogic = ProductModelLogic()
-    func requestGetCategoryProducts(categoryId: String) {
-        networkManager.requestGet(urlPath: stringSources.getItems(of: categoryId))
+    func requestGetProducts(url: String) {
+        networkManager.requestGet(urlPath: url)
             .observe(on: networkManager.serialSchedule)
             .retry(3)
             .subscribe(on: networkManager.concurrentSchedule)

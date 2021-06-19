@@ -1,5 +1,5 @@
 //
-//  CategoryView.swift
+//  ProductListView.swift
 //  MercadoLibreTest
 //
 //  Created by Heyner Rodriguez on 18/06/21.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class CategoryView: UIView {
+class ProductListView: UIView {
     
     private var navBar: NavigationBarView?
     
@@ -51,7 +51,7 @@ class CategoryView: UIView {
     }
 }
 
-extension CategoryView: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ProductListView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return products?.count ?? 0
     }
@@ -65,7 +65,7 @@ extension CategoryView: UICollectionViewDelegate, UICollectionViewDataSource {
     }
 }
 
-extension CategoryView: UICollectionViewDelegateFlowLayout {
+extension ProductListView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: productCollectionView.frame.size.width * 0.48, height: 220)
     }

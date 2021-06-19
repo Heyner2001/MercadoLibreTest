@@ -18,6 +18,11 @@ class StringSources {
         return getAllUrl(of: countryCurrenciesPath) + "/search?category=" + categoryId
     }
     
+    func getSearchUrl(search: String) -> String {
+        let searchText = search.replacingOccurrences(of: " ", with: "%")
+        return getAllUrl(of: countryCurrenciesPath) + "/search?q=" + searchText
+    }
+    
     func getAllUrl(of path: String) -> String {
         return urlBase + path
     }
@@ -29,7 +34,7 @@ class StringSources {
     let simpleArrow = "static_ic_simple_arrow"
     
     //Copies
-    let searchPlaceholder = "Busca tus productos"
+    let searchPlaceholder = "Busca en Mercado Libre"
     let categoriesTitle = "Categorías"
     
     //Keys

@@ -1,5 +1,5 @@
 //
-//  CategoryViewController.swift
+//  ProductListViewController.swift
 //  MercadoLibreTest
 //
 //  Created by Heyner Rodriguez on 18/06/21.
@@ -7,20 +7,20 @@
 
 import UIKit
 
-class CategoryViewController: UIViewController {
+class ProductListViewController: UIViewController {
     
-    var categoryView: CategoryView?
+    var productListView: ProductListView?
     
     init(viewTitle: String) {
         super.init(nibName: nil, bundle: nil)
         view.backgroundColor = .backgroundColor
-        categoryView = CategoryView(viewTitle: viewTitle)
-        view.addSubview(categoryView ?? UIView())
+        productListView = ProductListView(viewTitle: viewTitle)
+        view.addSubview(productListView ?? UIView())
         setUpConstraints()
     }
     
     private func setUpConstraints() {
-        categoryView?.snp.makeConstraints { $0.edges.equalToSuperview() }
+        productListView?.snp.makeConstraints { $0.edges.equalToSuperview() }
     }
     
     required init?(coder: NSCoder) {

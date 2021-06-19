@@ -68,15 +68,15 @@ extension HomeView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        categoryLogic.requestGetCategoryProducts(categoryId: countryData?.categories[indexPath.row].id ?? "")
-        let categoryVC = CategoryViewController(viewTitle: countryData?.categories[indexPath.row].name ?? "")
-        globalNavigationController?.pushViewController(categoryVC, animated: true)
+        categoryLogic.requestGetProducts(url: stringSources.getItems(of: countryData?.categories[indexPath.row].id ?? ""))
+        let productListVC = ProductListViewController(viewTitle: countryData?.categories[indexPath.row].name ?? "")
+        globalNavigationController?.pushViewController(productListVC, animated: true)
         
         categoryLogic.productModelLogic.publishSubject
             .subscribe(on: MainScheduler.instance)
             .subscribe(onNext: { _ in
                 DispatchQueue.main.async {
-                    categoryVC.categoryView?.productCollectionView.reloadData()
+                    productListVC.productListView?.productCollectionView.reloadData()
                 }
             })
             .disposed(by: networkManager.disposeBag)
