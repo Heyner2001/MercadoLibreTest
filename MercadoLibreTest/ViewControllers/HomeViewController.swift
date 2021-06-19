@@ -22,11 +22,6 @@ class HomeViewController: UIViewController {
         setUpConstraints()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(false)
-        
-    }
-    
     private func setUpConstraints() {
         homeView.snp.makeConstraints { $0.edges.equalToSuperview() }
     }
