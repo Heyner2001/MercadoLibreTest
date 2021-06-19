@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class NavBarSearch: UIView {
     
@@ -34,6 +35,8 @@ class NavBarSearch: UIView {
         super.init(frame: .zero)
         backgroundColor = .clear
         searchBar.searchTextFieldDelegate = self
+        searchBar.searchButtonDelegate = self
+        searchBar.searchTextField.becomeFirstResponder()
         addSubview(containerStackView)
         setUpConstraints()
     }
@@ -52,9 +55,20 @@ class NavBarSearch: UIView {
     }
 }
 
-extension NavBarSearch: SearchTextFieldActions {
-    func textFieldDidChange() {
-        //Pending
+extension NavBarSearch: SearchTextFieldActions, SearchButtonAction {
+    func searchButtonAction() {
+        categoryLogic.requestGetProducts(url: stringSources.getSearchUrl(search: searchBar.searchTextField.text ?? ""))
+        let productListVC = ProductListViewController(viewTitle: searchBar.searchTextField.text ?? "")
+        globalNavigationController?.pushViewController(productListVC, animated: true)
+        
+        categoryLogic.productModelLogic.publishSubject
+            .subscribe(on: MainScheduler.instance)
+            .subscribe(onNext: { _ in
+                DispatchQueue.main.async {
+                    productListVC.productListView?.productCollectionView.reloadData()
+                }
+            })
+            .disposed(by: networkManager.disposeBag)
     }
     
     func textFieldTap() {}

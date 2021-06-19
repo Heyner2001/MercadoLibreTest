@@ -33,6 +33,7 @@ class NavBarStandard: UIView {
         backgroundColor = .clear
         searchBar.searchButtonDelegate = self
         searchBar.searchTextFieldDelegate = self
+        searchBar.searchTextField.delegate = self
         addSubview(contentStackView)
         setUpConstraints()
     }
@@ -42,20 +43,23 @@ class NavBarStandard: UIView {
         leftImage.snp.makeConstraints { $0.width.equalTo(50) }
     }
     
+    private func openSearch() {
+        let searchVC = SearchViewController()
+        globalNavigationController?.pushViewController(searchVC, animated: true)
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
 extension NavBarStandard: SearchTextFieldActions, SearchButtonAction {
-    func textFieldDidChange() {}
-    
-    func textFieldTap() {
-        //Open search
+    func textFieldTap() { openSearch() }
+    func searchButtonAction() { openSearch() }
+}
+
+extension NavBarStandard: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return false
     }
-    
-    func searchButtonAction() {
-        //Open search
-    }
-    
 }

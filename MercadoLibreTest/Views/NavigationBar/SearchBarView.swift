@@ -8,7 +8,6 @@
 import UIKit
 
 protocol SearchTextFieldActions: class {
-    func textFieldDidChange()
     func textFieldTap()
 }
 
@@ -32,13 +31,18 @@ class SearchBarView: UIView {
         return stackView
     }()
     
-    private let searchTextField: UITextField = {
+    private lazy var searchTextFieldViewActon: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(textFieldTap)))
+        return view
+    }()
+    
+    lazy var searchTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .clear
         textField.font = .setFont(.regular, .normal)
         textField.placeholder = stringSources.searchPlaceholder
-        textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
-        textField.addTarget(self, action: #selector(textFieldTap), for: .touchUpInside)
         return textField
     }()
     
@@ -55,8 +59,10 @@ class SearchBarView: UIView {
         super.init(frame: .zero)
         backgroundColor = .white
         if roundedBorders { layer.cornerRadius = 22 }
+        searchTextFieldViewActon.isHidden = !(navBarType == .standard)
         clipsToBounds = true
         addSubview(searchStack)
+        addSubview(searchTextFieldViewActon)
         setUpConstraints()
     }
     
@@ -65,10 +71,7 @@ class SearchBarView: UIView {
             $0.edges.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 4))
         }
         searchButton.snp.makeConstraints { $0.width.equalTo(30) }
-    }
-    
-    @objc private func textFieldDidChange()  {
-        searchTextFieldDelegate?.textFieldDidChange()
+        searchTextFieldViewActon.snp.makeConstraints { $0.edges.equalTo(searchTextField) }
     }
     
     @objc private func textFieldTap() {
