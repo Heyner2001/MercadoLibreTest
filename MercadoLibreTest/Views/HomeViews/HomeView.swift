@@ -72,6 +72,7 @@ extension HomeView: UITableViewDelegate, UITableViewDataSource {
         let productListVC = ProductListViewController(viewTitle: countryData?.categories[indexPath.row].name ?? "")
         globalNavigationController?.pushViewController(productListVC, animated: true)
         
+        countryModelLogic.publishSubject.dispose()
         categoryLogic.productModelLogic.publishSubject
             .subscribe(on: MainScheduler.instance)
             .subscribe(onNext: { _ in

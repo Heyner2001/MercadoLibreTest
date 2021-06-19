@@ -24,7 +24,7 @@ struct ProductModel {
 var products: [ProductModel]?
 class ProductModelLogic {
     
-    let publishSubject = PublishSubject<ProductModel>()
+    let publishSubject = PublishSubject<[ProductModel]>()
     func objectCreation(object: [Any]) {
         //Become the dictionary object to ProductModel custom object
         var allProducts: [ProductModel] = []
@@ -46,9 +46,8 @@ class ProductModelLogic {
                       condition: product?["condition"] as? String ?? "")
             
             allProducts.append(productObject)
-            self.publishSubject.on(.next(productObject))
-            
         }
         products = allProducts
+        publishSubject.on(.next(allProducts))
     }
 }

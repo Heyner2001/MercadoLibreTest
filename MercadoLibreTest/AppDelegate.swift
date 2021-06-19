@@ -13,9 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let countryLogic = CountryModelLogic()
-        countryLogic.requestGetCountryData()
-        countryLogic.publishSubject
+        countryModelLogic.requestGetCountryData()
+        countryModelLogic.publishSubject
             .subscribe(on: MainScheduler.instance)
             .subscribe(onNext: { _ in
                 DispatchQueue.main.async {
