@@ -32,10 +32,17 @@ class StringSources {
     let searchImage = "static_ic_search"
     let backImage = "static_ic_back"
     let simpleArrow = "static_ic_simple_arrow"
+    let closeImage = "static_ic_close"
     
     //Copies
     let searchPlaceholder = "Busca en Mercado Libre"
     let categoriesTitle = "Categorías"
+    private let soldQuantityString = "Unidades vendidas: "
+    let conditionString = "Condición del producto: "
+    
+    func soldQuantityText(quantity: Int) -> String {
+        return soldQuantityString + String(quantity)
+    }
     
     //Keys
     let categoriesCellKey = "CategoriesCellKey"

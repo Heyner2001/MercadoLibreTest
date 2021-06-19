@@ -15,9 +15,10 @@ struct ProductModel {
     let price: Int
     let currencyId: String
     let availableQuantity: Int
-    let soldQuantity: Int?
+    let soldQuantity: Int
     let image: String
     let categoryId: String?
+    let condition: String
 }
 
 var products: [ProductModel]?
@@ -39,9 +40,10 @@ class ProductModelLogic {
                       price: product?["price"] as? Int ?? 0,
                       currencyId: product?["currency_id"] as? String ?? "$",
                       availableQuantity: product?["available_quantity"] as? Int ?? 0,
-                      soldQuantity: product?["sold_quantity"] as? Int,
+                      soldQuantity: product?["sold_quantity"] as? Int ?? 0,
                       image: product?["thumbnail"] as? String ?? "",
-                      categoryId: product?["category_id"] as? String)
+                      categoryId: product?["category_id"] as? String,
+                      condition: product?["condition"] as? String ?? "")
             
             allProducts.append(productObject)
             self.publishSubject.on(.next(productObject))

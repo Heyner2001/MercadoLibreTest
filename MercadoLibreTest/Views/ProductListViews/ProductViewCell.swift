@@ -11,6 +11,15 @@ import Kingfisher
 
 class ProductViewCell: UICollectionViewCell {
     
+    private var product: ProductModel? {
+        didSet {
+            let urlImage = URL(string: product?.image ?? "")
+            productImage.kf.setImage(with: urlImage)
+            productPrice.text = product?.price.currencyFormat().priceWithFormat(currenciId: product?.currencyId ?? "")
+            productName.text = product?.title
+        }
+    }
+    
     private lazy var contentStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -68,10 +77,15 @@ class ProductViewCell: UICollectionViewCell {
     }
     
     func setUpCell(product: ProductModel) {
-        let urlImage = URL(string: product.image)
-        productImage.kf.setImage(with: urlImage)
-        productPrice.text = product.price.currencyFormat().priceWithFormat(currenciId: product.currencyId)
-        productName.text = product.title
+        self.product = product
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openProductDetail)))
+    }
+    
+    @objc private func openProductDetail() {
+        guard let prod = product else { return }
+        let productDetailVC = ProductDetailViewController(product: prod, productImage: productImage.image ?? UIImage())
+        productDetailVC.modalPresentationStyle = .overFullScreen
+        globalNavigationController?.present(productDetailVC, animated: true, completion: nil)
     }
     
     required init?(coder: NSCoder) {

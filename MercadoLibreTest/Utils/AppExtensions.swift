@@ -99,3 +99,9 @@ extension String {
         return symbol.symbol + " " + self
     }
 }
+
+extension UIViewController {
+    func getTopMostViewController() -> UIViewController? {
+        return globalNavigationController?.topViewController
+    }
+}
