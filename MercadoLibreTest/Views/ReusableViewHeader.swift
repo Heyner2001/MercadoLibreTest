@@ -1,5 +1,5 @@
 //
-//  ReusableCollectionViewHeader.swift
+//  ReusableViewHeader.swift
 //  MercadoLibreTest
 //
 //  Created by Heyner Rodriguez on 17/06/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ReusableCollectionViewHeader: UICollectionReusableView {
+class ReusableViewHeader: UIView {
     
     let headerLabel: UILabel = {
         let label = UILabel()
@@ -19,6 +19,7 @@ class ReusableCollectionViewHeader: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .backgroundColor
         addSubview(headerLabel)
         setUpConstraints()
     }

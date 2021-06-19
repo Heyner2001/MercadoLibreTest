@@ -7,9 +7,17 @@
 
 import UIKit
 
-class CategoryCellView: UICollectionViewCell {
+class CategoryCellView: UITableViewCell {
     
     private var categoryId: String = ""
+    private lazy var containerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 5
+        view.addSubview(contentStackView)
+        return view
+    }()
+    
     private lazy var contentStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -38,15 +46,20 @@ class CategoryCellView: UICollectionViewCell {
         return imageView
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: .zero)
-        contentView.backgroundColor = .white
-        contentView.layer.cornerRadius = 5
-        contentView.addSubview(contentStackView)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = .clear
+        contentView.addSubview(containerView)
         setUpConstraints()
     }
     
     private func setUpConstraints() {
+        containerView.snp.makeConstraints {
+            $0.left.right.equalToSuperview()
+            $0.top.equalToSuperview().offset(1)
+            $0.bottom.equalToSuperview().offset(-1)
+        }
+        
         contentStackView.snp.makeConstraints {
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().offset(-20)
@@ -59,11 +72,6 @@ class CategoryCellView: UICollectionViewCell {
     func setUpCell(category: CategoryModel) {
         categoryNameLabel.text = category.name
         categoryId = category.id
-        contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openCategory)))
-    }
-    
-    @objc private func openCategory() {
-        categoryLogic.requestGetCategoryData(categoryId: categoryId)
     }
     
     required init?(coder: NSCoder) {

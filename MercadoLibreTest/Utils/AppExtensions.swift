@@ -73,3 +73,29 @@ extension UIApplication {
     
     static let navBarHeight: CGFloat = statusBarHeight + 60
 }
+
+extension Int {
+    
+    func format(_ form: String) -> String {
+        return String(format: "%\(form)f", self)
+    }
+    
+    func currencyFormat() -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.roundingMode = .halfUp
+        formatter.locale = Locale(identifier: "es_CO")
+        
+        guard let str = formatter.string(from: NSNumber(value: self)) else {
+            return self.format(".2")
+        }
+        return str
+    }
+}
+
+extension String {
+    func priceWithFormat(currenciId: String) -> String {
+        guard let symbol = countryData?.currencies.filter({ $0.id == currenciId }).first else { return "" }
+        return symbol.symbol + " " + self
+    }
+}

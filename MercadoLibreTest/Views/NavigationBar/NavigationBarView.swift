@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 enum NavBarType {
-    case standard, search
+    case standard, search, simple
 }
 
 class NavigationBarView: UIView {
@@ -22,10 +22,24 @@ class NavigationBarView: UIView {
     
     private var barType: UIView?
     
-    init(type: NavBarType) {
+    init(type: NavBarType, viewTitle: String? = nil) {
         super.init(frame: .zero)
-        backgroundColor = type == .standard ? .mainYellow : .white
-        barType = type == .standard ? NavBarStandard() : NavBarSearch()
+        
+        switch type {
+        case .standard:
+            barType = NavBarStandard()
+            backgroundColor = .mainYellow
+            break
+        case .search:
+            barType = NavBarSearch()
+            backgroundColor = .white
+            break
+        case .simple:
+            guard let text = viewTitle else { return }
+            barType = NavBarSimple(viewTitle: text)
+            backgroundColor = .mainYellow
+            break
+        }
         
         //Bottom shadow
         layer.shadowColor = UIColor.black.cgColor

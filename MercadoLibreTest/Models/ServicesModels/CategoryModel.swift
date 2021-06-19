@@ -20,13 +20,19 @@ struct CategoryModel: Decodable {
 let categoryLogic = CategoryModelLogic()
 class CategoryModelLogic {
     
-    func requestGetCategoryData(categoryId: String) {
+    let productModelLogic = ProductModelLogic()
+    func requestGetCategoryProducts(categoryId: String) {
         networkManager.requestGet(urlPath: stringSources.getItems(of: categoryId))
             .observe(on: networkManager.serialSchedule)
             .retry(3)
             .subscribe(on: networkManager.concurrentSchedule)
             .map { data in
-                //Json parse
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                    let productsJson: [Any]? = json?["results"] as? [Any]
+                    guard let object = productsJson else { return }
+                    self.productModelLogic.objectCreation(object: object)
+                }
             }
             .subscribe(onCompleted: {})
             .disposed(by: networkManager.disposeBag)
