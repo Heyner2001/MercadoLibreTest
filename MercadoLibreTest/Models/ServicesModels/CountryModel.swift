@@ -56,6 +56,7 @@ struct Currencies: Decodable {
 }
 
 var countryData: CountryModel?
+let countryModelLogic = CountryModelLogic()
 class CountryModelLogic {
     
     let publishSubject = PublishSubject<CountryModel>()
@@ -68,6 +69,7 @@ class CountryModelLogic {
                 countryData = try? JSONDecoder().decode(CountryModel.self, from: data)
                 guard let countryInfo = countryData else { return }
                 self.publishSubject.on(.next(countryInfo))
+                self.publishSubject.dispose()
             }
             .subscribe(onCompleted: {})
             .disposed(by: networkManager.disposeBag)
