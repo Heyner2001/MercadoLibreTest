@@ -9,11 +9,13 @@ import UIKit
 
 class ProductDetailViewController: UIViewController {
     
-    let productDetailView: ProductDetailView
-    let fakeBlurEffect: UIView = {
+    private let productDetailView: ProductDetailView
+    private lazy var fakeBlurEffect: UIView = {
         let view = UIView()
         view.backgroundColor = .black
         view.alpha = 0.4
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                         action: #selector(closeProductDetailView)))
         return view
     }()
     
@@ -35,6 +37,10 @@ class ProductDetailViewController: UIViewController {
             $0.width.equalTo(UIScreen.main.bounds.width * 0.87)
             $0.height.equalTo(UIScreen.main.bounds.height * 0.6)
         }
+    }
+    
+    @objc private func closeProductDetailView() {
+        globalNavigationController?.dismiss(animated: true, completion: nil)
     }
     
     required init?(coder: NSCoder) {

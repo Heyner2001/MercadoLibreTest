@@ -93,7 +93,7 @@ class ProductDetailView: UIView {
         }
         
         contentStackView.snp.makeConstraints {
-            $0.top.equalTo(closeButton.snp.bottom).offset(12)
+            $0.top.equalTo(closeButton.snp.bottom).offset(16)
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().offset(-20)
             $0.bottom.lessThanOrEqualToSuperview().offset(-16)
