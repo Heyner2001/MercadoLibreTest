@@ -35,4 +35,5 @@ class StringSources {
     //Keys
     let categoriesCellKey = "CategoriesCellKey"
     let categoriesHeaderKey = "CategoriesHeader"
+    let productCellKey = "productCellKey"
 }

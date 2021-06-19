@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .subscribe(on: MainScheduler.instance)
             .subscribe(onNext: { _ in
                 DispatchQueue.main.async {
-                    homeVC.homeView.categoriesCollectionView.reloadData()
+                    homeVC.homeView.categoriesTableView.reloadData()
                 }
             })
             .disposed(by: networkManager.disposeBag)

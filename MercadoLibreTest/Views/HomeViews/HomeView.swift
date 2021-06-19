@@ -6,43 +6,44 @@
 //
 
 import UIKit
+import RxSwift
 
 class HomeView: UIView {
     
     let navBar = NavigationBarView(type: .standard)
     
-    lazy var categoriesCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collection.backgroundColor = UIColor.clear
-        collection.showsVerticalScrollIndicator = false
-        collection.layer.cornerRadius = 5
-        collection.clipsToBounds = true
-        collection.register(CategoryCellView.self,
-                            forCellWithReuseIdentifier: stringSources.categoriesCellKey)
-        collection.register(ReusableCollectionViewHeader.self,
-                            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                            withReuseIdentifier: stringSources.categoriesHeaderKey)
-        collection.delegate = self
-        collection.dataSource = self
-        return collection
+    lazy var categoriesTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.rowHeight = 60
+        tableView.bounces = true
+        tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
+        tableView.isScrollEnabled = true
+        tableView.alwaysBounceVertical = true
+        tableView.showsVerticalScrollIndicator = false
+        tableView.bounces = false
+        tableView.layer.cornerRadius = 5
+        tableView.clipsToBounds = true
+        tableView.register(CategoryCellView.self, forCellReuseIdentifier: stringSources.categoriesCellKey)
+        tableView.delegate = self
+        tableView.dataSource = self
+        return tableView
     }()
     
     init() {
         super.init(frame: .zero)
         addSubview(navBar)
-        addSubview(categoriesCollectionView)
+        addSubview(categoriesTableView)
         setUpConstraints()
     }
     
     private func setUpConstraints() {
         navBar.snp.makeConstraints { $0.right.left.top.equalToSuperview() }
-        categoriesCollectionView.snp.makeConstraints {
+        categoriesTableView.snp.makeConstraints {
             $0.left.equalToSuperview().offset(16)
             $0.right.equalToSuperview().offset(-16)
             $0.top.equalTo(navBar.snp.bottom).offset(20)
-            $0.bottom.equalToSuperview()
+            $0.bottom.equalToSuperview().offset(-UIApplication.bottomSafeInset)
         }
     }
     
@@ -51,41 +52,43 @@ class HomeView: UIView {
     }
 }
 
-extension HomeView: UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension HomeView: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return countryData?.categories.count ?? 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = categoriesCollectionView.dequeueReusableCell(withReuseIdentifier: stringSources.categoriesCellKey, for: indexPath) as? CategoryCellView else {
-            return UICollectionViewCell()
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = categoriesTableView.dequeueReusableCell(withIdentifier: stringSources.categoriesCellKey, for: indexPath) as? CategoryCellView else {
+            return UITableViewCell()
         }
         guard let category = countryData?.categories[indexPath.row] else { return cell }
         cell.setUpCell(category: category)
+        cell.selectionStyle = .none
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        var view: UICollectionReusableView?
-        if kind == UICollectionView.elementKindSectionHeader {
-            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: stringSources.categoriesHeaderKey, for: indexPath) as? ReusableCollectionViewHeader else { return UICollectionReusableView() }
-            headerView.setHeaderTitle(title: stringSources.categoriesTitle)
-            view = headerView
-        } else { return UICollectionReusableView() }
-        return view ?? UICollectionReusableView()
-    }
-}
-
-extension HomeView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: categoriesCollectionView.frame.size.width, height: 57)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 2
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        categoryLogic.requestGetCategoryProducts(categoryId: countryData?.categories[indexPath.row].id ?? "")
+        let categoryVC = CategoryViewController(viewTitle: countryData?.categories[indexPath.row].name ?? "")
+        globalNavigationController?.pushViewController(categoryVC, animated: true)
+        
+        categoryLogic.productModelLogic.publishSubject
+            .subscribe(on: MainScheduler.instance)
+            .subscribe(onNext: { _ in
+                DispatchQueue.main.async {
+                    categoryVC.categoryView?.productCollectionView.reloadData()
+                }
+            })
+            .disposed(by: networkManager.disposeBag)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return  CGSize(width: categoriesCollectionView.frame.size.width, height: 60)
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = ReusableViewHeader()
+        header.setHeaderTitle(title: stringSources.categoriesTitle)
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60
     }
 }
